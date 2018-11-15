@@ -28,6 +28,8 @@ public class OrderController {
     	List<Order> lstOrder = orderClient.getOrderList(order);
     	
     	pageQuery.setT(order);
+    	pageQuery.setPageNum(1);
+    	pageQuery.setPageSize(1);
         PageInfo<Order> pageInfo = orderClient.getOrderPage(pageQuery);
         
         return ApiUtil.getSuccessResult(pageInfo, "查询成功!");

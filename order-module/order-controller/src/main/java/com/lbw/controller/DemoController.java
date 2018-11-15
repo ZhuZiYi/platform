@@ -25,8 +25,8 @@ public class DemoController {
     public String test(){
     	/*for (int i = 0;i<10;i++)
     		producer.sendMessage("qq", "test " + i);*/
-    	int a=0;
-    	int b = 100/a;
+    	//int a=0;
+    	//int b = 100/a;
         return "test";
     }
 }

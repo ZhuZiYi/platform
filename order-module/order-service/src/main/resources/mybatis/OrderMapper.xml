@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.lbw.order.entity.Order">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="order_id" jdbcType="CHAR" property="orderId" />
-    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="fee" jdbcType="FLOAT" property="fee" />
     <result column="memo" jdbcType="VARCHAR" property="memo" />
