@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lbw.mapper.SysUserMapper">
-  <resultMap id="BaseResultMap" type="com.lbw.domain.SysUser">
+<mapper namespace="com.lbw.platform.security.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.lbw.platform.security.domain.SysUser">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />

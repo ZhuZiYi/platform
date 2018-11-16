@@ -2,16 +2,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.lbw</groupId>
+		<groupId>com.lbw.platform</groupId>
 		<artifactId>base-controller</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.lbw.order</groupId>
 	<artifactId>order-controller</artifactId>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.lbw.order</groupId>
+			<groupId>com.lbw.platform.order</groupId>
 			<artifactId>order-intf</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
@@ -23,4 +22,6 @@
 			<artifactId>spring-boot-starter-activemq</artifactId>
 		</dependency>
 	</dependencies>
+	<version>0.0.1-SNAPSHOT</version>
+	<groupId>com.lbw.platform.order</groupId>
 </project>
