@@ -12,5 +12,5 @@
   	<module>admin-intf</module>
   	<module>admin-service</module>
   </modules>
-  <groupId>com.lbw.platform</groupId>
+  <groupId>com.lbw.platform.admin</groupId>
 </project>
