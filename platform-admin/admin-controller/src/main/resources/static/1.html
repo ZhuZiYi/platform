@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<h1>get test</h1>
+<script language="javascript">
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', 'http://localhost:8113/user/getLoginUser?loginUser=13974890351&access_token=a642e3ce-f0eb-4b83-a6c9-cc6f4160cb491&deviceId=113.247.55.220');
+    //xhr.open('get','http://localhost:8083/demo?access_token=3a6899c0-126c-497a-b7a6-45acb145589c');
+    // xhr.open('get','http://localhost:8001/order-controller/order/myOrder?access_token=88d2646e-c198-42eb-a15d-d051c4ff67a0');
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert(xhr.responseText);
+        }
+        alert(xhr.status);
+    };
+</script>
+</body>
+</html>

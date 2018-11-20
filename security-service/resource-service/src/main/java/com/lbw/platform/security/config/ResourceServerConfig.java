@@ -27,6 +27,7 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -38,6 +39,8 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+	@Autowired
+	private SecurityProperties securityProperties;
 
 	// @Autowired
 	// private RedisConnectionFactory connectionFactory;
@@ -65,14 +68,23 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		config.addAllowedMethod("*");
 		source.registerCorsConfiguration("/**", config);
 		CorsFilter corsFilter = new CorsFilter(source);
-		http.authorizeRequests().antMatchers("/noauth/**").permitAll().anyRequest().authenticated().and()
+		http.authorizeRequests().antMatchers("/noauth/**","/static/**","/html/**","/css/**","/data/**","/js/**","/img/**").permitAll().anyRequest().authenticated().and()
 				.addFilterBefore(corsFilter,
 						/* FilterSecurityInterceptor.class */SecurityContextPersistenceFilter.class)// 一写要放在SecurityContextPersistenceFilter
 																									// 前CORS才生效
 				// .authorizeRequests().anyRequest().hasRole("USER").and()
-				// 认证不通过后的处理
-				.exceptionHandling().authenticationEntryPoint(new RestAuthenticationEntryPoint()).and().csrf().disable()
-				.httpBasic();
+				.csrf().disable()				
+				//.httpBasic().and()
+				.formLogin()
+				.loginPage("/login")
+		        .permitAll()
+		        .and()
+		        .logout().permitAll(); //注销行为任意访问
+		
+		if (securityProperties.isJsonMode())
+			http.exceptionHandling().authenticationEntryPoint(new RestAuthenticationEntryPoint());
+		else
+			http.exceptionHandling().authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
 
 		// http.addFilterBefore(myFilterSecurityInterceptor,
 		// FilterSecurityInterceptor.class);
@@ -87,16 +99,17 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
 		// 定义异常转换类生效
 		AuthenticationEntryPoint authenticationEntryPoint = new OAuth2AuthenticationEntryPoint();
+		Auth2ResponseExceptionTranslator auth2ResponseExceptionTranslator = new Auth2ResponseExceptionTranslator();
+		auth2ResponseExceptionTranslator.setSecurityProperties(securityProperties);
 		((OAuth2AuthenticationEntryPoint) authenticationEntryPoint)
-				.setExceptionTranslator(new Auth2ResponseExceptionTranslator());
+				.setExceptionTranslator(auth2ResponseExceptionTranslator);
 		resources.authenticationEntryPoint(authenticationEntryPoint);
 	}
 
 	/**
 	 * 权限不通过的处理
 	 */
-	public static class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
-
+	public static class RestAuthenticationEntryPoint implements AuthenticationEntryPoint  {
 		@Override
 		public void commence(HttpServletRequest request, HttpServletResponse response,
 				AuthenticationException authException) throws IOException, ServletException {

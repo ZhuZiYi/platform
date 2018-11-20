@@ -87,7 +87,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//认证不通过后的处理
         .and().exceptionHandling()
         .authenticationEntryPoint(new RestAuthenticationEntryPoint())
-		.and().csrf().disable().httpBasic();
+		.and().csrf().disable().httpBasic();		
 	}
 	
 	/**

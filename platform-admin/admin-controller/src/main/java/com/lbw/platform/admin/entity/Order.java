@@ -1,4 +1,4 @@
-package com.lbw.platform.admin.order.intf;
+package com.lbw.platform.admin.entity;
 
 import java.io.Serializable;
 import java.util.Date;

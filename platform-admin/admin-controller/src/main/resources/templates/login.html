@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>登录</title>
+<link rel="stylesheet" type="text/css"
+	href="css/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/icon.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+        function clearForm(){
+            $('#loginForm').form('clear');
+        }
+    </script>
+</head>
+<body>
+	<!-- <div style="margin:20px 0;">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#w').window('open')">Open</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#w').window('close')">Close</a>
+    </div> -->
+	<div id="w" class="easyui-window" title="请先登录"
+		data-options="modal:true,iconCls:'Lockgo',closable:false,minimizable:false"
+		style="width: 400px; padding: 20px 70px 20px 70px;">
+		<form id='loginForm' action='http://localhost:8000/admin/admin' method="POST">
+		<div style="margin-bottom: 10px">
+			<input class="easyui-textbox" name="username"
+				style="width: 100%; height: 30px; padding: 12px"
+				data-options="prompt:'用户名',iconCls:'icon-man',iconWidth:38" />
+		</div>
+		<div style="margin-bottom: 20px">
+			<input class="easyui-textbox" name="password" type="password"
+				style="width: 100%; height: 30px; padding: 12px"
+				data-options="prompt:'登录密码',iconCls:'icon-lock',iconWidth:38" />
+		</div>
+		<div style="margin-bottom: 20px">
+			<input class="easyui-textbox" type="text" name="imageCode"
+				style="width: 50%; height: 30px; padding: 12px"
+				data-options="prompt:'验证码'" /> <a href="javascript:;"
+				class="showcode" onclick="changeVeryfy()"><img
+				style="margin: 0 0 0 3px; vertical-align: middle; height: 26px;"
+				src="http://localhost:8000/code/image" /></a>
+		</div>
+		<div>
+			<input class="easyui-linkbutton" type="submit"
+				data-options="iconCls:'icon-ok'"
+				style="padding: 5px 0px; width: 100%;"/> 
+			
+		</div>
+
+       </form>
+
+	</div>
+
+</body>
+</html>

@@ -1,8 +1,8 @@
 <!-- 指标库列表 -->
 
-<!-- 数据表 -->
+<!-- 数据表data/griddata.json -->
 <table class="easyui-datagrid" title="订单列表" fit="true" fitColumns="true"
-	url="data/griddata.json" method="get" toolbar="#toolbar" 
+	url="http://localhost:8084/noauth/order/list" method="get" toolbar="#toolbar" 
 	striped="true" rownumbers="true" pagination="true" remoteSort="false">
 	<thead>
 		<tr>
@@ -40,6 +40,7 @@
     	<a href="#" class="easyui-linkbutton" iconCls="icon-print" plain="true">打印</a>
     	<a href="#" class="easyui-linkbutton" iconCls="icon-back" plain="true">导入</a>
     	<a href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true">导出</a>
+    	<a href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true">备份</a>
 	</div>
 </div>
 <!-- /数据表工具栏 -->

@@ -69,6 +69,18 @@ public final  class ApiUtil {
         apiResult.setMsg(message);
         return apiResult;
     }
+    
+    /**
+     * 获取处理成功ApiResult
+     * @param t 返回结果
+     * @param <T> 类型
+     * @return
+     */
+    public static <T> ApiResult<T> getEasyResult(T t){
+        ApiResult<T> apiResult = new EasyApiResult<T>(t);
+        //apiResult.setResult(t);
+        return apiResult;
+    }
 
 //    /**
 //     * 获取处理失败的ApiResult
