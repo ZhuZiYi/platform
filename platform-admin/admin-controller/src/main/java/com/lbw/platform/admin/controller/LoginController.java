@@ -19,7 +19,8 @@ public class LoginController {
 	@GetMapping("/")
 	public String login(Model model){
 		log.info("登录成功,跳转主页面");
-		model.addAttribute("user",((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
+		model.addAttribute("user",
+				((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
 		return "index";
 	}
 	
