@@ -13,5 +13,11 @@
 		<artifactId>security-service</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-oauth2</artifactId>
+		</dependency>
+	</dependencies>
 </project>

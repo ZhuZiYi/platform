@@ -10,7 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.lbw.platform.security.security.DomainUserDetailsService;
+import com.lbw.platform.security.validateCode.JdbcValidateCodeRepository;
+import com.lbw.platform.security.validateCode.ValidateCodeRepository;
+
 
 @Configuration
 //这么 写防止出现循环引用
@@ -35,6 +37,11 @@ public class CommonBean {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public ValidateCodeRepository jdbcValidateCodeRepository() {
+		return new JdbcValidateCodeRepository();
 	}
 	
 	@Bean

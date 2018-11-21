@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import com.lbw.platform.security.common.MyAuthenticationException;
+import com.lbw.platform.security.validateCode.ValidateCode;
+import com.lbw.platform.security.validateCode.ValidateCodeRepository;
+import com.lbw.platform.security.validateCode.ValidateType;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
@@ -25,7 +28,6 @@ import java.util.concurrent.TimeUnit;
  * @author zhailiang
  *
  */
-@Component
 @CrossOrigin
 public class RedisValidateCodeRepository implements ValidateCodeRepository {
 	private Logger logger = LoggerFactory.getLogger(getClass());

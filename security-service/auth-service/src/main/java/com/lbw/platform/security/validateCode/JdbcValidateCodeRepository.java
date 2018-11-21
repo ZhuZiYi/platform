@@ -12,13 +12,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import com.lbw.platform.security.common.MyAuthenticationException;
 import com.lbw.platform.security.domain.SysValidateCode;
 import com.lbw.platform.security.mapper.SysValidateCodeMapper;
+import com.lbw.platform.security.validateCode.ValidateCode;
+import com.lbw.platform.security.validateCode.ValidateCodeRepository;
+import com.lbw.platform.security.validateCode.ValidateType;
 
-@Component
 @CrossOrigin
 public class JdbcValidateCodeRepository implements ValidateCodeRepository {
 	private Logger logger = LoggerFactory.getLogger(getClass());

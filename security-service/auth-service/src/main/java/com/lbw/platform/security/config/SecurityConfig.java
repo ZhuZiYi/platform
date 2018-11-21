@@ -28,7 +28,6 @@ import org.springframework.web.filter.CorsFilter;
 
 import com.lbw.platform.security.auth.imageCode.ImageCodeAuthenticationConfig;
 import com.lbw.platform.security.auth.smsCode.SmsAuthenticationConfig;
-import com.lbw.platform.security.security.DomainUserDetailsService;
 
 import java.io.IOException;
 
@@ -83,7 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.apply(imageCodeAuthenticationConfig)
 		.and().apply(smsAuthenticationConfig)
 		.and().addFilterBefore(corsFilter, /*FilterSecurityInterceptor.class*/SecurityContextPersistenceFilter.class)
-		.authorizeRequests().antMatchers("/noauth/**","/code/**","/oauth/**").permitAll().anyRequest().authenticated()
+		.authorizeRequests().antMatchers("/code/**","/oauth/**").permitAll().anyRequest().authenticated()
 		//认证不通过后的处理
         .and().exceptionHandling()
         .authenticationEntryPoint(new RestAuthenticationEntryPoint())

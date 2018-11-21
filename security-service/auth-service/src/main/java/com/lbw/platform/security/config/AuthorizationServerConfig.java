@@ -28,7 +28,6 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
-import com.lbw.platform.security.security.DomainUserDetailsService;
 
 import javax.jws.soap.SOAPBinding;
 import javax.sql.DataSource;

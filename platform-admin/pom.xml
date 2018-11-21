@@ -9,8 +9,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>admin-controller</module>
-  	<module>admin-intf</module>
-  	<module>admin-service</module>
   </modules>
   <groupId>com.lbw.platform.admin</groupId>
 </project>

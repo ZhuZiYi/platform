@@ -24,7 +24,7 @@ public abstract  class AbStractValidateCodeProcess<C extends ValidateCode> imple
     private Map<String,ValidateCodeGenerator> validateCodeGeneratorMap;
 
     @Autowired
-    @Qualifier("jdbcValidateCodeRepository")
+    //@Qualifier("jdbcValidateCodeRepository")
     private ValidateCodeRepository validateCodeRepository;
 
 	@Override

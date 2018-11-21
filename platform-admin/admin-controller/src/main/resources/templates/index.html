@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta charset="utf-8" />
-<title>EasyUI Demo</title>
+<title>登录</title>
 <link rel="stylesheet" type="text/css"
 	href="css/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="css/themes/icon.css" />
@@ -18,10 +19,11 @@
 	<div region="north" id="header">
 		<img src="img/logo.png" class="logo" />
 		<div class="top-btns">
-			<span>欢迎您，管理员</span> <a href="#" class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-lock'">修改密码</a> <a href="#"
+			<span>欢迎您， </span><span th:text="${user}"></span><a href="#" class="easyui-linkbutton"
+				data-options="plain:true,iconCls:'icon-lock'">修改密码</a> <a href="logout"
 				class="easyui-linkbutton"
 				data-options="plain:true,iconCls:'icon-clear'">退出系统</a>
+				
 			<!--  <select class="easyui-combobox" data-options="editable:false">
 					<option value="0" selected="selected">中文</option>
 					<option value="1">English</option>

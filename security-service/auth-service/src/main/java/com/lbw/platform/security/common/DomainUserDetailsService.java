@@ -1,4 +1,4 @@
-package com.lbw.platform.security.security;
+package com.lbw.platform.security.common;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.lbw.platform.security.domain.SysAuthority;
 import com.lbw.platform.security.domain.SysUser;
-import com.lbw.platform.security.mapper.SysAuthorityMapper;
 import com.lbw.platform.security.mapper.SysUserMapper;
 
 import java.util.HashSet;

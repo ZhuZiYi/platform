@@ -67,6 +67,7 @@
 		<module>gateway-service</module>
 		<module>platform-utils</module>
 		<module>platform-admin</module>
+		
 	</modules>
 	<groupId>com.lbw.platform</groupId>
 </project>
