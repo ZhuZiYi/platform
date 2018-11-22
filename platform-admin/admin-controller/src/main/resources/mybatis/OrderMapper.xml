@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lbw.platform.admin.mapper.OrderMapper">
-  <resultMap id="BaseResultMap" type="com.lbw.platform.admin.entity.Order">
+<mapper namespace="com.lbw.platform.admin.app.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.lbw.platform.admin.app.entity.Order">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="order_id" jdbcType="CHAR" property="orderId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -10,7 +10,7 @@
     <result column="memo" jdbcType="VARCHAR" property="memo" />
   </resultMap>
   
-  <select id="getOrderList" parameterType="com.lbw.platform.admin.entity.Order" resultMap="BaseResultMap">
+  <select id="getOrderList" parameterType="com.lbw.platform.admin.app.entity.Order" resultMap="BaseResultMap">
     select 
     *
     from app_order

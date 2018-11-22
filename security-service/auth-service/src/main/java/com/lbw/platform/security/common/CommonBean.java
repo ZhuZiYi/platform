@@ -3,6 +3,7 @@ package com.lbw.platform.security.common;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -35,6 +36,7 @@ public class CommonBean {
 	}
 
 	@Bean
+	@ConditionalOnMissingBean(PasswordEncoder.class)
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
