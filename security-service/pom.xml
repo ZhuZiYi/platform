@@ -25,5 +25,6 @@
 	<modules>
 		<module>auth-service</module>
 		<module>resource-service</module>
+		<module>auth-jwt-service</module>
 	</modules>
 </project>

@@ -1,0 +1,19 @@
+
+<div title="内容编辑">
+<div>
+    <h3 id="focush2"></h3>
+</div>
+<textarea id="content" name="content"  style="width:700px; height:600px;"></textarea>
+        
+       <script type="text/javascript">
+    $(function(){
+	        var editor = new baidu.editor.ui.Editor();  
+	         editor.render("content");
+
+	     //获取值
+
+	  alert(editor.getContent("#content"));
+	 });    
+</script>
+         
+</div>

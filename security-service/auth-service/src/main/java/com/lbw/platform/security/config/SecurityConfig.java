@@ -81,6 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().sameOrigin();
         http.apply(imageCodeAuthenticationConfig)
 		.and().apply(smsAuthenticationConfig)
+		//要放在SecurityContextPersistenceFilter前跨域才生效
 		.and().addFilterBefore(corsFilter, /*FilterSecurityInterceptor.class*/SecurityContextPersistenceFilter.class)
 		.authorizeRequests().antMatchers("/code/**","/oauth/**").permitAll().anyRequest().authenticated()
 		//认证不通过后的处理

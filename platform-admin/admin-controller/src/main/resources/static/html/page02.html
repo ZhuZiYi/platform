@@ -2,85 +2,86 @@
 
 <!-- 数据表data/griddata.json -->
 <table class="easyui-datagrid" title="订单列表" fit="true" fitColumns="true"
-	url="/order/list" method="get" toolbar="#toolbar" 
-	striped="true" rownumbers="true" pagination="true" remoteSort="false">
+	url="/order/list" method="get" toolbar="#toolbar" striped="true"
+	rownumbers="true" pagination="true" remoteSort="false">
 	<thead>
 		<tr>
 			<th field="orderId" width="20" align="center" sortable="true">订单ID</th>
 			<th field="createTime" width="10" align="center" sortable="true">创建时间</th>
 			<th field="fee" width="15" align="center" sortable="true">金额</th>
-			<th field="state" width="15" align="center" sortable="true">状态</th>
+			<th field="state" width="15" align="center" sortable="true" formatter="formatState">状态</th>
 			<th field="memo" width="15" align="center" sortable="true">备注</th>
 		</tr>
 	</thead>
 </table>
+<script language=javascript>
+function formatState(val,row){
+        if (val == 0){
+            return '<span style="color:red;">【未处理】</span>';
+        } else {
+            return '【已处理】';
+        }
+    }
+</script>
 <!-- /数据表 -->
 
 <!-- 数据表工具栏 -->
 <div class="toolbar" id="toolbar">
 	<div class="search-div">
-		<label>指标名称：</label>
-		<input type="text" class="easyui-textbox"  />
-		<label>是否公用：</label>
+		<label>指标名称：</label> <input type="text" class="easyui-textbox" /> <label>是否公用：</label>
 		<select class="easyui-combobox" data-options="editable:false">
 			<option value="0">是</option>
 			<option value="1">否</option>
-		</select>
-		<label>是否自定义：</label>
-		<select class="easyui-combobox" data-options="editable:false">
+		</select> <label>是否自定义：</label> <select class="easyui-combobox"
+			data-options="editable:false">
 			<option value="0">是</option>
 			<option value="1">否</option>
-		</select>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
-    </div>
+		</select> <a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+	</div>
 	<div class="ctrl-div">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="addBtn">新增</a>
-   		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="editBtn">编辑</a>
-    	<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">批量删除</a>
-    	<a href="#" class="easyui-linkbutton" iconCls="icon-print" plain="true">打印</a>
-    	<a href="#" class="easyui-linkbutton" iconCls="icon-back" plain="true">导入</a>
-    	<a href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true">导出</a>
-    	<a href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true">备份</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
+			id="addBtn">新增</a> <a href="#" class="easyui-linkbutton"
+			iconCls="icon-edit" plain="true" id="editBtn">编辑</a> <a href="#"
+			class="easyui-linkbutton" iconCls="icon-remove" plain="true">批量删除</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-print"
+			plain="true">打印</a> <a href="#" class="easyui-linkbutton"
+			iconCls="icon-back" plain="true">导入</a> <a href="#"
+			class="easyui-linkbutton" iconCls="icon-redo" plain="true">导出</a> <a
+			href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true">备份</a>
 	</div>
 </div>
 <!-- /数据表工具栏 -->
 
 <!-- 弹出框 -->
-<div class="easyui-dialog" title="新增/编辑" iconCls="icon-save" modal="true"
-	closed="true" buttons="#dlg-btns" id="dlg">
+<div class="easyui-dialog" title="新增/编辑" iconCls="icon-save"
+	modal="true" closed="true" buttons="#dlg-btns" id="dlg">
 	<form id="fm" method="post">
 		<div class="fitem">
-			<label>指标名称：</label>
-			<input class="easyui-textbox" value="利润率" />
-			<label>是否公用：</label>
+			<label>指标名称：</label> <input class="easyui-textbox" value="利润率" /> <label>是否公用：</label>
 			<select class="easyui-combobox">
 				<option value="0">是</option>
 				<option value="1">否</option>
 			</select>
 		</div>
 		<div class="fitem">
-			<label>维护部门：</label>
-			<select class="easyui-combobox">
+			<label>维护部门：</label> <select class="easyui-combobox">
 				<option value="">财务部</option>
 				<option value="">人事部</option>
-			</select>
-			<label>维护角色：</label>
-			<select class="easyui-combobox">
+			</select> <label>维护角色：</label> <select class="easyui-combobox">
 				<option value="0">主办会计</option>
 				<option value="1">行政总监</option>
 				<option value="2">总经理</option>
 			</select>
 		</div>
 		<div class="fitem">
-			<label>审核部门：</label>
-			<select class="easyui-combobox">
+			<label>审核部门：</label> <select class="easyui-combobox">
 				<option value="">总经办</option>
 				<option value="">行政部</option>
 			</select>
 		</div>
 		<div class="fitem">
-			<label>备注说明：</label>
-			<input class="easyui-textbox" multiline="true" style="width:452px;height:52px;" value="考核项目的实际利润情况"  />
+			<label>备注说明：</label> <input class="easyui-textbox" multiline="true"
+				style="width: 452px; height: 52px;" value="考核项目的实际利润情况" />
 		</div>
 	</form>
 </div>
@@ -89,7 +90,8 @@
 <!-- 弹出框按钮组-->
 <div id="dlg-btns">
 	<a href="#" class="easyui-linkbutton" iconCls="icon-ok" id="saveBtn">保存</a>
-	<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" id="cancelBtn">取消</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-cancel"
+		id="cancelBtn">取消</a>
 </div>
 <!-- /弹出框 按钮组-->
 

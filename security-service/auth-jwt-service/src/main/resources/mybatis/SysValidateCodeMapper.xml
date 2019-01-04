@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lbw.platform.security.mapper.SysValidateCodeMapper">
+  <resultMap id="BaseResultMap" type="com.lbw.platform.security.domain.SysValidateCode">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="vcode" jdbcType="VARCHAR" property="vCode" />
+    <result column="expire_time" jdbcType="INTEGER" property="expireTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `key`,vcode,expire_time
+  </sql>
+
+  <select id="getValidCodeByKey" parameterType="String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_validcode
+    where `key` = #{key}
+  </select>
+  
+   <delete id="deleteValidCodeByKey" parameterType="String" >
+    delete 
+    from sys_validcode
+    where `key` = #{key}
+  </delete>
+  
+   <insert id="save" parameterType="com.lbw.platform.security.domain.SysValidateCode" >
+    insert into sys_validcode(`key`,vcode,expire_time)
+    values (#{key,jdbcType=VARCHAR},#{vCode,jdbcType=VARCHAR},#{expireTime,jdbcType=INTEGER})
+    </insert>
+  
+</mapper>
